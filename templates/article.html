@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ title }}</h2>
+<p><strong>Year:</strong> {{ year }}</p>
+
+<p><a href="{{ link or '#' }}" target="_blank">View Full Article</a></p>
+
+<p id="keywords"><strong>Keywords: </strong><span id="keywords-text">loading...</span></p>
+
+<h3>Abstract</h3>
+<p>{{ abstract }}</p>
+
+<h3>AI Summary</h3>
+<p id="summary">Loading summary... This might take a while</p>
+
+<script>
+    // Controller for cancelling AI process when user exits page
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    // Fetch keywords
+    fetch("/keywords/{{ article_id }}", { signal })
+        .then(res => res.json())
+        .then(data => {
+            const keyw_span = document.getElementById("keywords-text");
+            let html = '';
+            data.keywords.forEach((keyword, index) => {
+                html += `<a href="/?q=${encodeURIComponent(keyword)}">#${keyword}</a>`;
+                if (index < data.keywords.length - 1) {
+                    html += ' '; // space between keywords
+                }
+            });
+            keyw_span.innerHTML = html;
+        })
+        .catch(() => {
+            document.getElementById("keywords").textContent = "not available";
+        });
+
+    // Fetch summary
+    fetch("/summarize/{{ article_id }}", { signal })
+        .then(res => res.json())
+        .then(data => {
+            if (data.summary) {
+                document.getElementById("summary").textContent = data.summary;
+            } else {
+                document.getElementById("summary").textContent = "Not available";
+            }
+        })
+        .catch(() => {
+            document.getElementById("summary").textContent = "Error loading summary";
+        });
+    
+    // Cancel if user leaves page
+    window.addEventListener("beforeunload", () => {
+        controller.abort();
+    });
+</script>
+
+{% endblock %}

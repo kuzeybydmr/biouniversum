@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>How to Use BioUniversum</h2>
+
+<p>
+    Welcome to <strong>BioUniversum</strong>, your AI-powered dashboard for exploring 
+    NASA's space biology publications. This guide will help you get started and 
+    understand most of the platform.
+</p>
+
+<hr>
+
+<h3>1. Searching for Articles</h3>
+<p>
+    Use the search bar on the homepage to find articles by title or keyword. 
+    For example, type <em>microgravity</em> to view all studies related to that topic.
+</p>
+
+<h3>2. Viewing an Article</h3>
+<p>
+    Click on a result to open its page. There, you will see:
+</p>
+<ul>
+    <li><strong>Publication Year</strong></li>
+    <li><strong>Full Text:</strong> a direct link to the complete article on NCBI.</li>
+    <li><strong>Keywords:</strong> clickable keywords that link to related results.</li>
+    <li><strong>Abstract:</strong> the official summary provided in the publication.</li>
+    <li><strong>AI Summary:</strong> a generated summary that condenses the full article for quicker understanding.</li>
+</ul>
+
+<h3>3. Exploring with Keywords</h3>
+<p>
+    Keywords appear below the summary. Click on any keyword to instantly search 
+    for other articles related to that concept.
+</p>
+
+<h3>4. Finding the Best Match</h3>
+<p>
+    Not sure where to start? Use the <strong>Find Matching Article</strong> feature to jump 
+    directly to the article that is most related to your search query.
+</p>
+
+<h3>5. Gallery</h3>
+<p>
+    Visit the <a href="{{ url_for('gallery') }}">Gallery</a> page to see inspiring photos 
+    from NASA's Space Biology experiments.
+</p>
+
+<hr>
+
+<p>
+    <em>Tip:</em> Summarization may take a few minutes, depending on the length of the article. 
+    Please allow the AI time to complete the process.
+</p>
+
+{% endblock %}
