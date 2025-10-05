@@ -11,10 +11,6 @@ This is BioUniversum, an intuitive dashboard that uses AI summarization to help 
 * 5. **Find Matching Article:** Jump directly to the most relevant article for your query.
 * 6. **Gallery:** View screenshots and visualizations from NASA’s Space Biology experiments.
 
-## Demo
-
-*(Optional: include screenshots or GIFs here to show your dashboard in action.)*
-
 ## Installation
 
 1. Clone the repository:
