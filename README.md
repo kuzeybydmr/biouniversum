@@ -16,7 +16,7 @@ This is BioUniversum, an intuitive dashboard that uses AI summarization to help 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/biouniversum.git
+git clone https://github.com/kuzeybydmr/biouniversum.git
 cd biouniversum
 ```
 
